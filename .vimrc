@@ -52,8 +52,9 @@ Plugin 'easymotion/vim-easymotion'
 Plugin 'oplatek/Conque-Shell'
 Plugin 'mbbill/undotree'
 Plugin 'yegappan/mru'
-Plugin 'vim-scripts/taglist.vim'
 Plugin 'tpope/vim-fugitive'
+Plugin 'docunext/closetag.vim'
+Plugin 'majutsushi/tagbar'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -87,11 +88,26 @@ set nocompatible
 set ignorecase
 autocmd BufEnter * silent! lcd %:p:h
 filetype plugin indent on
-set tags=tags;
+
+" CTags {
+	" This will look in the current directory for "tags", and work up the tree towards root until one is found. IOW, you can be anywhere in your source tree instead of just the root of it.
+	set tags=./tags;/
+" }
+
+" TagBar {
+	nmap <C-L> :TagbarToggle<CR>
+" }
+
 autocmd BufNewFile,BufRead \*.{md,mdwn,mkd,mkdn,mark\*} set filetype=markdown
-autocmd BufEnter *  if (expand('%:p') == '/var/www/html/public/read.html') | set cb^=html | else | set cb-=html | endif
+autocmd BufEnter *  if (expand('%:p') == '/var/www/html/readContent.html') | set cb^=html | else | set cb-=html | endif
 nnoremap <F3> <C-w><C-w>
 nnoremap <Tab> :b#<CR>
+
+" autimatically load the file's change content
+set autoread
+
+imap jk <Esc>
+
 
 
 " use system clipboard
@@ -196,7 +212,7 @@ if !has("unix")
 set guioptions-=a
 endif
 
-colorscheme desert
+colorscheme industry
 
 " Alt-Space is System menu
 if has("gui_running")
@@ -207,7 +223,9 @@ if has("gui_running")
 set guioptions-=T
 set guioptions-=r
 set guioptions-=L
-set guifont=Anonymous\ Pro\ 16
+" set guifont=Anonymous\ Pro\ 14
+" set guifont=Courier\ 10\ Pitch\ 14
+set guifont=monaco\ 14
 noremap <M-Space> :simalt ~<CR>
 inoremap <M-Space> <C-O>:simalt ~<CR>
 cnoremap <M-Space> <C-C>:simalt ~<CR>

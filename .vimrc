@@ -55,6 +55,8 @@ Plugin 'yegappan/mru'
 Plugin 'tpope/vim-fugitive'
 Plugin 'docunext/closetag.vim'
 Plugin 'majutsushi/tagbar'
+Plugin 'scrooloose/syntastic'
+Plugin 'klen/python-mode'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -72,6 +74,7 @@ filetype plugin indent on    " required
 " Put your non-Plugin stuff after this line
 "---------------------Vundle------------------------
 
+"---------------------My Customization------------------------
 set number
 set cul
 set tabstop=4
@@ -79,7 +82,7 @@ set shiftwidth=4
 set smarttab
 filetype indent on
 set filetype=html
-set smartindent
+set cindent
 set showmatch
 set autoindent
 syntax on
@@ -88,58 +91,81 @@ set nocompatible
 set ignorecase
 autocmd BufEnter * silent! lcd %:p:h
 filetype plugin indent on
-
-" CTags {
-	" This will look in the current directory for "tags", and work up the tree towards root until one is found. IOW, you can be anywhere in your source tree instead of just the root of it.
-	set tags=./tags;/
-" }
-
-" TagBar {
-	nmap <C-L> :TagbarToggle<CR>
-" }
-
 autocmd BufNewFile,BufRead \*.{md,mdwn,mkd,mkdn,mark\*} set filetype=markdown
 autocmd BufEnter *  if (expand('%:p') == '/var/www/html/readContent.html') | set cb^=html | else | set cb-=html | endif
-nnoremap <F3> <C-w><C-w>
+nnoremap <F2> <C-w><C-w>
 nnoremap <Tab> :b#<CR>
-
 " autimatically load the file's change content
 set autoread
-
 imap jk <Esc>
+if has("gui_running")
+	set guioptions-=T
+	set guioptions-=r
+	set guioptions-=L
+	colorscheme flatcolor
+	" set guifont=Anonymous\ Pro\ 14
+	" set guifont=Courier\ 10\ Pitch\ 14
+	set guifont=monaco\ 14
+endif
+"setlocal spell spelllang=en_us
+"---------------------My Customization------------------------
 
 
+"---------------------ctags------------------------
+" This will look in the current directory for "tags", and work up the tree towards root until one is found. IOW, you can be anywhere in your source tree instead of just the root of it.
+set tags=./tags;/
+"---------------------ctags------------------------
 
-" use system clipboard
-" set clipboard=unnamedplus
 
-"  $nnoremap html :set cb^=html<CR>"+p:set cb-=html<CR>
+"---------------------TagBar------------------------
+nmap <C-L> :TagbarToggle<CR>
+let g:tagbar_autofocus = 1
+"---------------------TagBar------------------------
+
+
+"---------------------YouCompleteMe------------------------
 " If you prefer the Omni-Completion tip window to close when a selection is
 " made, these lines close it on movement in insert mode or when leaving
 " insert mode
 " autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
 autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+"---------------------YouCompleteMe------------------------
 
+"---------------------Syntastic------------------------
+	set statusline+=%#warningmsg#
+	set statusline+=%{SyntasticStatuslineFlag()}
+	set statusline+=%*
 
-" Ag {
+	let g:syntastic_always_populate_loc_list = 1
+	let g:syntastic_auto_loc_list = 1
+	let g:syntastic_check_on_open = 1
+	let g:syntastic_check_on_wq = 0
+
+    let g:syntastic_mode_map = {
+        \ "mode": "active",
+        \ "active_filetypes": [],
+        \ "passive_filetypes": ["python"] }
+"---------------------Syntastic------------------------
+
+"---------------------Ag------------------------
 " run from the project rootdirectory
   let g:ag_working_path_mode='r'
-" }
+"---------------------Ag------------------------
 
-" airline {
+"---------------------Airline------------------------
   set laststatus=2
   let g:airline#extensions#tabline#enabled = 1
-" }
-" NERDTree {
+"---------------------Airline------------------------
+
+"---------------------NERDTree------------------------
 " open NERDTree when vim starts
 " autocmd vimenter * NERDTree
 " close vim if the only window left is NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
-map <F2> :NERDTreeToggle<CR>
+map <C-N> :NERDTreeToggle<CR>
+"---------------------NERDTree------------------------
 
-" }
-
-" ctrlp {
+"---------------------Ctrlp------------------------
  	let g:ctrlp_working_path_mode = 'ra'
 "	let g:ctrlp_by_filename = 1
 "	nnoremap <C-i> :CtrlP <C-r>=working_directory<CR><CR>
@@ -147,32 +173,25 @@ map <F2> :NERDTreeToggle<CR>
 " auto_save {
 	let g:auto_save = 1  " enable AutoSave on Vim startup
 	let g:auto_save_in_insert_mode = 0  " do not save while in insert mode
+	let g:auto_save_silent = 1  " do not display the auto-save notification
 " }
-"setlocal spell spelllang=en_us
+"---------------------Ctrlp------------------------
 
-"-------------------------------------------------------------------------
+"---------------------mswin.vim------------------------
+" The following text is from mswin.vim, you should put it under ~/.vim/plugin folder
 " Set options and add mapping such that Vim behaves a lot like MS-Windows
 "
 " Maintainer:	Bram Moolenaar <Bram@vim.org>
 " Last change:	2006 Apr 02
 
 " bail out if this isn't wanted (mrsvim.vim uses this).
-"
-" backspace and cursor keys wrap to previous/next line
-" CTRL-C and CTRL-Insert are Copy
-" CTRL-V and SHIFT-Insert are Paste
-" Use CTRL-Q to do what CTRL-V used to do
-" Use CTRL-S for saving, also in Insert mode
-" Alt-Space is System menu
-" CTRL-A is Select all
-
 if exists("g:skip_loading_mswin") && g:skip_loading_mswin
-finish
+  finish
 endif
 
 " set the 'cpoptions' to its Vim default
 if 1	" only do this when compiled with expression evaluation
-let s:save_cpo = &cpoptions
+  let s:save_cpo = &cpoptions
 endif
 set cpo&vim
 
@@ -185,12 +204,20 @@ set backspace=indent,eol,start whichwrap+=<,>,[,]
 " backspace in Visual mode deletes selection
 vnoremap <BS> d
 
+" CTRL-X and SHIFT-Del are Cut
+vnoremap <C-X> "+x
+vnoremap <S-Del> "+x
+
 " CTRL-C and CTRL-Insert are Copy
 vnoremap <C-C> "+y
+vnoremap <C-Insert> "+y
 
 " CTRL-V and SHIFT-Insert are Paste
 map <C-V>		"+gP
+map <S-Insert>		"+gP
+
 cmap <C-V>		<C-R>+
+cmap <S-Insert>		<C-R>+
 
 " Pasting blockwise and linewise selections is not possible in Insert and
 " Visual mode without the +virtualedit feature.  They are pasted as if they
@@ -206,29 +233,30 @@ vmap <S-Insert>		<C-V>
 " Use CTRL-Q to do what CTRL-V used to do
 noremap <C-Q>		<C-V>
 
+" Use CTRL-S for saving, also in Insert mode
+noremap <C-S>		:update<CR>
+vnoremap <C-S>		<C-C>:update<CR>
+inoremap <C-S>		<C-O>:update<CR>
+
 " For CTRL-V to work autoselect must be off.
 " On Unix we have two selections, autoselect can be used.
 if !has("unix")
-set guioptions-=a
+  set guioptions-=a
 endif
 
-colorscheme industry
+" CTRL-Z is Undo; not in cmdline though
+noremap <C-Z> u
+inoremap <C-Z> <C-O>u
+
+" CTRL-Y is Redo (although not repeat); not in cmdline though
+noremap <C-Y> <C-R>
+inoremap <C-Y> <C-O><C-R>
 
 " Alt-Space is System menu
-if has("gui_running")
-" pencil corlorscheme {
-"	set background=light
-"	let g:pencil_higher_contrast_ui = 1
-"}
-set guioptions-=T
-set guioptions-=r
-set guioptions-=L
-" set guifont=Anonymous\ Pro\ 14
-" set guifont=Courier\ 10\ Pitch\ 14
-set guifont=monaco\ 14
-noremap <M-Space> :simalt ~<CR>
-inoremap <M-Space> <C-O>:simalt ~<CR>
-cnoremap <M-Space> <C-C>:simalt ~<CR>
+if has("gui")
+  noremap <M-Space> :simalt ~<CR>
+  inoremap <M-Space> <C-O>:simalt ~<CR>
+  cnoremap <M-Space> <C-C>:simalt ~<CR>
 endif
 
 " CTRL-A is Select all
@@ -239,9 +267,22 @@ onoremap <C-A> <C-C>gggH<C-O>G
 snoremap <C-A> <C-C>gggH<C-O>G
 xnoremap <C-A> <C-C>ggVG
 
+" CTRL-Tab is Next window
+noremap <C-Tab> <C-W>w
+inoremap <C-Tab> <C-O><C-W>w
+cnoremap <C-Tab> <C-C><C-W>w
+onoremap <C-Tab> <C-C><C-W>w
+
+" CTRL-F4 is Close window
+noremap <C-F4> <C-W>c
+inoremap <C-F4> <C-O><C-W>c
+cnoremap <C-F4> <C-C><C-W>c
+onoremap <C-F4> <C-C><C-W>c
+
 " restore 'cpoptions'
 set cpo&
 if 1
-let &cpoptions = s:save_cpo
-unlet s:save_cpo
+  let &cpoptions = s:save_cpo
+  unlet s:save_cpo
 endif
+"---------------------mswin.vim------------------------

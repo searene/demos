@@ -169,13 +169,14 @@ map <C-N> :NERDTreeToggle<CR>
  	let g:ctrlp_working_path_mode = 'ra'
 "	let g:ctrlp_by_filename = 1
 "	nnoremap <C-i> :CtrlP <C-r>=working_directory<CR><CR>
-" }
-" auto_save {
+"---------------------Ctrlp------------------------
+
+"---------------------auto_save------------------------
 	let g:auto_save = 1  " enable AutoSave on Vim startup
 	let g:auto_save_in_insert_mode = 0  " do not save while in insert mode
 	let g:auto_save_silent = 1  " do not display the auto-save notification
-" }
-"---------------------Ctrlp------------------------
+"---------------------auto_save------------------------
+
 
 "---------------------mswin.vim------------------------
 " The following text is from mswin.vim, you should put it under ~/.vim/plugin folder

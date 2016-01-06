@@ -1,6 +1,8 @@
 #!/bin/bash
 
-# This file is used to fire wifi signal from PC, working properly on ubuntu 15.10
+# This script to used to create hotspot on laptop.
+# You need to install dnsmasq and hostapd first.
+# Works on ubuntu 15.04.
 
 trap ctrl_c INT
 function ctrl_c() {

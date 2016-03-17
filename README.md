@@ -12,3 +12,6 @@ A simple shell script to fire wifi from a laptop, in order to utilized by anothe
 
 # backupMega.py
 A backup script written in python, used to backup your files to mega. See [my blog](https://searene.github.io/2015/12/27/backup-script/) for more details.
+
+# front-end template
+This is a template for front-end development, designed specific to node.js express.

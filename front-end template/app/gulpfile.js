@@ -11,9 +11,9 @@ var del         = require('del');
 var reload      = browserSync.reload;
 
 var paths = {
-    jade:['app/views/*.jade'],
-    html:['app/views/*.html'],
-    scss:['app/scss/*.scss'],
+    jade:['views/*.jade'],
+    html:['views/*.html'],
+    scss:['scss/*.scss'],
     // script:['script.coffee']
 };
 
@@ -23,7 +23,7 @@ gulp.task('mincss', function(){
         .pipe(rename({suffix:'.min'}))
         .pipe(autoprefixer('last 2 version', 'safari 5', 'ie 8', 'ie 9'))
         .pipe(minifyCss())
-        .pipe(gulp.dest('app/public/css'))
+        .pipe(gulp.dest('public/css'))
         .pipe(reload({stream:true}));
 });
 
@@ -43,7 +43,7 @@ gulp.task('html', function(){
 gulp.task('browser-sync', ['nodemon'], function () {
   browserSync.init({
     proxy: 'http://localhost:3000',
-    files: ['app/public/**/*.*', 'app/views/**/*.*'],
+    files: ['public/**/*.*', 'views/**/*.*'],
     //browser: 'google chrome',
     notify: false,
     port: 5000
@@ -54,7 +54,7 @@ gulp.task('nodemon', function (cb) {
   var called = false;
 
   return nodemon({
-    script: 'app/bin/www'
+    script: 'bin/www'
   }).on('start', function () {
     if (!called) {
       cb();

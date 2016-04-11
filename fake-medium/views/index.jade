@@ -1,0 +1,134 @@
+extends layout
+block content
+	link(rel='stylesheet', href='/css/main.min.css')
+	.container
+		nav.navbar.navbar-fixed-top#header
+			.navbar-header
+				a.navbar-brand.siteNav-logo(href='#')
+					svg(viewBox="0 0 45 45" width="45" height="45")
+						symbol#svg-logoNew-45px-p0(viewBox="-17 18 45 45")
+							path(d="M11.525 28.078c-.472-.225-.858.002-.858.506v20.044l8.616 4.113c.948.46 1.717.14 1.717-.7v-19.3c0-.08-.05-.15-.124-.19l-9.35-4.46v-.01z")
+						symbol#svg-logoNew-45px-p1(viewBox="-17 18 45 45")
+							path(d="M.333 43.696l9.83-15.247c.278-.43.89-.6 1.36-.38l9.364 4.47c.06.03.082.1.047.15L10.666 48.63.333 43.698v-.002z")
+						symbol#svg-logoNew-45px-p2(viewBox="-17 18 45 45")
+							path(d="M-8.57 28.35c-.786-.375-1.053-.096-.592.62L.333 43.696l10.333 4.932L.356 32.635c-.015-.023-.036-.042-.06-.054l-8.866-4.23z")
+						symbol#svg-logoNew-45px-p3(viewBox="-17 18 45 45")
+							path(d="M.333 52.033c0 .84-.643 1.22-1.43.844l-8.045-3.84c-.472-.224-.858-.82-.858-1.325V28.89c0-.672.515-.976 1.145-.675l9.133 4.36c.034.015.055.048.055.084v19.37z")
+						use.svgIcon-use--part0(xlink:href="#svg-logoNew-45px-p0")
+						use.svgIcon-use--part1(xlink:href="#svg-logoNew-45px-p1")
+						use.svgIcon-use--part2(xlink:href="#svg-logoNew-45px-p2")
+						use.svgIcon-use--part3(xlink:href="#svg-logoNew-45px-p3")
+					svg.svgIcon--logoWordmarkNew(viewBox="0 0 95 45", width="95", height="45")
+						symbol#svg-logoWordmarkNew-95x45px-p0(viewBox="8 18 95 45")
+							path(d="M38.926 37.656c-3.187 0-5.652 2.02-5.652 5.575 0 4.07 2.87 5.73 5.73 5.73 1.67 0 3.238-.43 4.58-1.38.13-.1.153-.17.08-.31l-.67-1.22c-.075-.14-.175-.14-.3-.07-1.244.7-2.262 1.02-3.478 1.02-1.472 0-3.21-.7-3.438-3.04 0-.02 0-.07.08-.07h8.072c.247 0 .227-.41.227-.78 0-3.92-2.46-5.43-5.197-5.43h-.034zm2.59 4.43h-5.578c-.1 0-.074-.098-.074-.12.25-1.434 1.37-2.383 3.014-2.383 1.64 0 2.713 1.117 2.713 2.43 0 .05-.02.07-.07.07v.01-.006zm-14.04-7.872l-4.41 8.1c-.028.05-.053.05-.078 0l-4.41-8.1c-.074-.12-.175-.195-.352-.195h-3.023c-.13 0-.203.07-.203.19V48.6c0 .123.076.196.202.196h2.116c.126 0 .203-.073.203-.196v-9.07c0-1.05-.02-2.025-.05-2.513 0-.05.08-.074.11 0 .25.634.66 1.44 1.06 2.17l3.66 6.588c.08.13.15.178.3.178h.89c.16 0 .23-.05.31-.168l3.66-6.58c.41-.73.81-1.532 1.06-2.164.03-.07.11-.05.11 0-.02.5-.05 1.47-.05 2.52v9.08c0 .13.08.2.21.2h2.11c.13 0 .21-.07.21-.19V34.22c0-.118-.07-.188-.19-.188h-3.05c-.19-.01-.29.063-.37.184zm68.022 5.29c-.697-1.29-2.04-1.846-3.686-1.846-1.494 0-2.862.508-3.932 1.53-.798-1.022-1.967-1.533-3.387-1.533-1.343 0-2.415.336-3.436 1.067l-1.717-.86c-.307-.148-.504 0-.504.267v10.45c0 .11.07.18.197.18h2.085c.12 0 .198-.08.198-.2v-6.72c0-.64.05-.92.365-1.27.55-.59 1.38-.9 2.22-.9 1.4 0 2.26.78 2.26 2.21v6.67c0 .12.07.2.2.2h2.09c.12 0 .2-.08.2-.2v-6.72c0-.63.05-.93.38-1.28.55-.59 1.37-.9 2.22-.9.92 0 1.61.34 1.99 1 .17.34.28.78.28 1.39v6.5c0 .12.07.2.2.2h2.09c.12 0 .2-.08.2-.2v-6.43c0-1.25-.2-2.03-.52-2.66l.04.02zM56.928 33.2h-2.09c-.126 0-.2.072-.2.195v4.794c0 .07-.025.09-.1.07-.94-.39-1.84-.61-2.885-.61-3.16 0-5.53 2.04-5.53 5.55 0 3.95 2.49 5.75 5.33 5.75 1.35 0 2.394-.34 3.463-1.07l1.72.85c.295.15.498 0 .498-.27V33.4c0-.12-.074-.196-.202-.196V33.2l-.004-.007zm-2.29 11.54c0 .61-.024.877-.448 1.268-.796.73-1.644.924-2.415.924-1.413 0-3.132-.83-3.132-3.705 0-2.34 1.343-3.557 3.142-3.557.9 0 1.67.198 2.34.75.476.387.525.732.525 1.552v2.747l-.01.02zm20.99-6.94h-2.09c-.12 0-.193.074-.193.196v6.745c0 .62-.025.88-.422 1.28-.795.73-1.67.93-2.564.93-1.08 0-1.82-.38-2.17-1.09-.15-.31-.23-.73-.23-1.36v-6.49c0-.11-.08-.19-.2-.19h-2.09c-.13 0-.21.08-.21.2v6.58c0 1.03.15 1.71.41 2.27.67 1.44 2.14 2.12 4.11 2.12 1.44 0 2.54-.34 3.63-1.07l1.69.85c.29.14.49 0 .49-.27V38c0-.117-.08-.186-.2-.186h-.01l.02-.014zm-14.243-4.65c-.82 0-1.47.61-1.47 1.364 0 .755.653 1.363 1.474 1.363.82 0 1.47-.608 1.47-1.363s-.64-1.364-1.47-1.364h-.01zm1.047 4.65H60.34c-.125 0-.2.074-.2.196v10.592c0 .122.075.195.2.195h2.085c.125 0 .2-.073.2-.195V37.996c0-.122-.075-.195-.2-.195h.007z")
+						use(xlink:href="#svg-logoWordmarkNew-95x45px-p0")
+			.collapse.navbar-collapse
+				ul.nav.navbar-nav.navbar-left
+					li.navTabs-item
+						a.is-active.navTabs-anchor(href='#') Staff picks
+					li.navTabs-item
+						a.navTabs-anchor(href='#') Top stories
+					li.navTabs-item
+						a.navTabs-anchor(href='#') Bookmarks
+				ul.nav.navbar-nav.pull-right
+					li
+						.input-group.pull-right
+							button.button.button-with-svg(title="Click to start typing a search term")
+								svg.svgIcon.svgIcon--search(viewBox="0 0 25 25", width="25", height="25")
+									symbol#svg-search-25px-p0(viewBox="0 0 25 25")
+										path(d="M20.067 18.933l-4.157-4.157c.837-1.032 1.34-2.345 1.34-3.776 0-3.314-2.686-6-6-6s-6 2.686-6 6 2.686 6 6 6c1.43 0 2.744-.503 3.776-1.34l4.157 4.157c.113.113.27.183.442.183.345 0 .625-.28.625-.625 0-.173-.07-.33-.183-.442zM6.5 11c0-2.62 2.13-4.75 4.75-4.75S16 8.38 16 11s-2.13 4.75-4.75 4.75S6.5 13.62 6.5 11z")
+									use(xlink:href="#svg-search-25px-p0")
+							input.input-search(type="search", placeholder="Search Medium")
+					li.right-btn
+						button.button.button-silver.button-round Write a story
+					li.right-btn
+						button.button.button-silver.button-enhance.button-round Sign in / Sign up
+		.promo
+			.promo-content
+				h1.promo-title Move thinking forward.
+				h2.promo-subtitle Medium is a community of readers and writers offering unique perspectives on ideas large and small.
+				h3.promo-text Sign up to read and interact with what matters most to you.
+				.buttonSet
+					a.button.button-round.button-hover-white-font.button-pink-border.button-filled(href='#') Get started
+					a.button.button-round.button-hover-pink-font.button-pink-border(href='#') Learn more
+			button.button.promo-dismissButton
+				span.icon.icon--close
+		.layout-content.backgroundGreyLightest
+			.layout-article.u-float-left
+				each val in [1,2,3,4,5,6,7,8,9,10]
+					.article
+						.post-content-top
+							.u-float-left
+								a.avatar(href="#")
+									img.avatar-image(src="../images/avatar1.jpeg")
+							.feed-summary
+								a.author Tracey Ross
+								span.supplemental
+									a.post-time.hover-black 3 days ago
+									span.middle-dot
+									span.reading-time 8 min read
+						.post-content
+							.layout-single-column
+								img.post-content-image(src='../images/post1.jpeg')
+								h1.post-content-title What Flint Reveals about African Americans and Trust in Government
+								p.post-content-abstract This week, the House Committee on…
+							.read-more
+								p.post-content-readmore.hover-black Read more...
+							.post-content-bottom
+								.post-content-like
+									svg(width="25", height="25").svg-green.valign-middle.hover-hand
+										symbol#svg-heart-25px-p0
+											path(d="M12.5 21c-.117 0-.234-.04-.327-.122-.278-.24-.61-.517-.978-.826-2.99-2.5-7.995-6.684-7.995-10.565C3.2 6.462 5.578 4 8.5 4c1.55 0 3 .695 4 1.89 1-1.195 2.452-1.89 4-1.89 2.923 0 5.3 2.462 5.3 5.487 0 3.97-4.923 8.035-7.865 10.464-.42.35-.798.66-1.108.93-.094.08-.21.12-.327.12zM8.428 4.866c-2.414 0-4.378 2.05-4.378 4.568 0 3.475 5.057 7.704 7.774 9.975.243.2.47.39.676.56.245-.21.52-.43.813-.68 2.856-2.36 7.637-6.31 7.637-9.87 0-2.52-1.964-4.57-4.377-4.57-1.466 0-2.828.76-3.644 2.04-.1.14-.26.23-.43.23-.18 0-.34-.09-.43-.24-.82-1.27-2.18-2.03-3.65-2.03z")
+										use(xlink:href="#svg-heart-25px-p0")
+									span.post-content-like-number.valign-middle.hover-hand.hover-black 146
+								.post-content-response-bundle
+									span.post-content-response.grey.valign-middle.hover-hand.hover-black 16 responses
+									span.post-content-bookmark.valign-middle
+										svg(width="25", height="25").svg-grey.valign-middle.hover-hand.hover-black
+											symbol#svg-bookmark-25px-p0
+												path(d="M19 6c0-1.1-.9-2-2-2H8c-1.1 0-2 .9-2 2v14.66h.012c.01.103.045.204.12.285.186.203.502.217.706.03L12.5 16.85l5.662 4.126c.096.088.217.13.338.13.135 0 .27-.054.37-.16.073-.082.107-.183.118-.285H19V6zm-6.838 9.97L7 19.636V6c0-.55.45-1 1-1h9c.55 0 1 .45 1 1v13.637l-5.162-3.668c-.19-.18-.484-.18-.676 0z")
+											use(xlink:href="#svg-bookmark-25px-p0")
+									i.fa.fa-angle-down.svg-grey.hover-hand.hover-black
+			.layout-right-column
+				.layout-right-tags
+					.layout-right-top
+						p.u-float-left.featured-tags Featured tags
+						a(href="#").u-float-right.learn-more.grey-font.link-norm Learn more
+					.tags
+						a.link(href='#') 2016 Election
+						a.link(href='#') Bernie Sanders
+						a.link(href='#') Hillary Clinton
+						a.link(href='#') Brussels
+						a.link(href='#') Terrorism
+						a.link(href='#') Apple
+						a.link(href='#') March Madness
+						a.link(href='#') Android
+						a.link(href='#') Travel
+						a.link(href='#') Open Letter
+						a.link(href='#') Refugees
+						a.link(href='#') Donald Trump
+						a.link(href='#') Ted Cruz
+						a.link(href='#') BlackLivesMatter
+						a.link(href='#') Millennials
+						a.link(href='#') Racism
+						a.link(href='#') Sent Email Poem
+					.layout-right-top
+						p.u-float-left.featured-tags Top stories on Medium
+						a(href="#").u-float-right.learn-more.grey-font.link-norm See more
+						
+					.stories.story-ul
+						.ul
+							each val in [1,2,3,4,5]
+								li.story-item
+									span.story-record 1
+									.story-content
+										h4.story-title.link-norm 8 Days in North Korea
+										a.story-author.link-norm Erick Tseng
+					.layout-bottom-links
+						a.bottom-link(href='#') Help
+						a.bottom-link(href='#') Careers
+						a.bottom-link(href='#') Developers
+						a.bottom-link(href='#') Blog
+						a.bottom-link(href='#') Privacy
+						a.bottom-link(href='#') Terms
+						a.bottom-link(href='#') About

@@ -53,13 +53,13 @@ Plugin 'yegappan/mru'
 Plugin 'tpope/vim-fugitive'
 Plugin 'docunext/closetag.vim'
 Plugin 'majutsushi/tagbar'
-" Plugin 'scrooloose/syntastic'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'szw/vim-maximizer'
 Plugin 'SirVer/ultisnips'
 Plugin 'Crapworks/python_fn.vim'
-Plugin 'file:///home/searene/Development/MarkdownToImgur'
+Plugin 'vim-scripts/vim-auto-save'
+Plugin 'lilydjwg/fcitx.vim'
 "Plugin 'searene/pyvim'
 "Plugin 'klen/python-mode'
 
@@ -82,24 +82,21 @@ filetype plugin indent on    " required
 
 "---------------------My Customization------------------------
 if has("gui_running")
-	" remove toolbar
 	set guioptions-=T
 	set guioptions-=r
 	set guioptions-=L
-	" remove menu
 	set guioptions-=m 
-	" colorscheme mac_classic
-	colorscheme mayansmoke
+	colorscheme nedit
 	set guifont=monaco\ 16
-	"set guifont=ubuntu\ mono\ 16
 endif
 set number
 set cul
 set tabstop=4
 set shiftwidth=4
-set smarttab
 set cindent
 set showmatch
+set softtabstop=0
+set noexpandtab
 set autoindent
 syntax on
 set fileencodings=utf-8,gb2312,gbk,ucs-bom,cp936
@@ -118,22 +115,6 @@ nnoremap <Leader>cd :cd %:p:h<CR>:pwd<CR>
 "autocmd BufEnter * silent! lcd %:p:h
 autocmd BufNewFile,BufRead \*.{md,mdwn,mkd,mkdn,mark\*} set filetype=markdown
 nnoremap <c-x> :q<CR>
-
-command! Ctags !cd $HOME&&ctags -R $HOME/Development/languagezone_project $HOME/.virtualenvs/languagezone_dev /usr/lib/python3.4
-" change path for languagezone project
-set path+=$HOME/.virtualenvs/languagezone_dev,/lib/python3.4/site-packages,$HOME/.local/lib/python3.4/site-packages
-" Search the whole project with Ag
-command! -nargs=1 AgProject :Ag <args> /home/searene/Development/languagezone_project /home/searene/.virtualenvs/languagezone_dev /usr/lib/python3.4
-
-" add html metadata to readContent.html so it can be read more easily on kindle
-au BufEnter * if(expand('%:t') == 'readContent.html') | set cb^=html | else | set cb-=html | endif
-
-noremap <F12> :!xclip -selection clipboard -o -t text/html > /var/www/html/readContent.html<CR>
-" save automatically when text is changed
-set updatetime=200
-"au InsertLeave * silent! write
-au CursorHold * silent! update
-"inoremap <Esc> <Esc>:silent! update<CR>
 
 " tell it to use an undo file
 set undofile
@@ -184,6 +165,12 @@ let g:UltiSnipsSnippetDirectories=["UltiSnips"]
 let g:UltiSnipsEditSplit="vertical"
 "---------------------ultisnips------------------------
 
+
+"---------------------vim-auto-save------------------------
+let g:auto_save = 1  " enable AutoSave on Vim startup
+let g:auto_save_in_insert_mode = 0  " do not save while in insert mode
+let g:auto_save_silent = 1  " do not display the auto-save notification
+"---------------------vim-auto-save------------------------
 
 "---------------------vim-maximizer------------------------
 nnoremap <Leader>m :MaximizerToggle!<CR>
@@ -248,13 +235,3 @@ nnoremap <Leader>n :NERDTreeToggle<CR>
  	let g:ctrlp_working_path_mode = 'r'
 "	let g:ctrlp_by_filename = 1
 " ---------------------Ctrlp------------------------
-
-function! HelloVim()
-	echo "Hello Vim"
-endfunction
-
-function! HelloPython()
-python << endPython
-print("Hello Python")
-endPython
-endfunction

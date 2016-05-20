@@ -59,9 +59,9 @@ Plugin 'szw/vim-maximizer'
 Plugin 'SirVer/ultisnips'
 Plugin 'Crapworks/python_fn.vim'
 Plugin 'vim-scripts/vim-auto-save'
-Plugin 'lilydjwg/fcitx.vim'
-"Plugin 'searene/pyvim'
-"Plugin 'klen/python-mode'
+"Plugin 'lilydjwg/fcitx.vim'
+Plugin 'xolox/vim-easytags'
+Plugin 'morhetz/gruvbox'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -86,8 +86,10 @@ if has("gui_running")
 	set guioptions-=r
 	set guioptions-=L
 	set guioptions-=m 
-	colorscheme nedit
-	set guifont=monaco\ 16
+	"colorscheme nedit
+	colorscheme gruvbox
+	set guifont=monaco\ 14
+	"set guifont=inconsolata\ 16
 endif
 set number
 set cul

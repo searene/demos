@@ -1,15 +1,27 @@
 {
-    "manifest_version": 2,
-    "name": "SendToKindle",
-    "description": "Send selected text to kindle server",
-    "version": "1.0",
-    "icons": { 
-        "128": "img/icon128.png" 
+	"manifest_version": 2,
+	"name": "sample",
+	"description": "a sample manifest",
+	"version": "1.0",
+	"permissions": [
+		"storage"
+	],
+	"icons": { 
+		"128": "img/icon128.png" 
+	},
+	"background": {
+        "scripts": ["event.js"],
+        "persistent": false
     },
-    "browser_action": {
-        "default_popup": "popup.html"
-    },
-    "permissions": [
-        "activeTab"
-    ]
-}
+	"browser_action": {
+		"default_popup": "popup.html"
+	},
+	"content_security_policy": "script-src 'self' https://ssl.google-analytics.com; object-src 'self'",
+	"web_accessible_resources": [
+		"img/icon128.png"
+	],
+	"permissions": [
+        "tabs", 
+        "http://*/*", 
+        "https://*/*"
+    ]}

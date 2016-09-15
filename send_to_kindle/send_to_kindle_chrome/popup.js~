@@ -1,0 +1,21 @@
+// var HOST = 'http://searene.party';
+var HOST = 'http://searene.party';
+var PORT = '3000';
+
+function upload(plain, html) {
+  $.ajax({
+    method: 'POST',
+    url: HOST + ':' + PORT + '/upload',
+    data: {plain: plain, html: html}
+  });
+}
+chrome.tabs.executeScript( {
+  code: "window.getSelection().toString();"
+}, function(selection) {
+  var plainText = selection[0];  
+  upload(plainText, '');
+
+  // display plain and html in popup.html
+  $("#plain").html(plainT);
+  $("#html").html(html);
+});

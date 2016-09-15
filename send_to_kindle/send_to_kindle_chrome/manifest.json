@@ -1,7 +1,7 @@
 {
 	"manifest_version": 2,
-	"name": "sample",
-	"description": "a sample manifest",
+	"name": "send_to_kindle",
+	"description": "A chrome extention to send contents to server",
 	"version": "1.0",
 	"permissions": [
 		"storage"
@@ -10,12 +10,12 @@
 		"128": "img/icon128.png" 
 	},
 	"background": {
-        "scripts": ["event.js"],
-        "persistent": false
-    },
-	"browser_action": {
-		"default_popup": "popup.html"
-	},
+    "scripts": ["jquery-3.1.0.min.js", "event.js"],
+    "persistent": false
+  },
+  "browser_action": {
+    "default_icon": "img/icon128.png"
+  },
 	"content_security_policy": "script-src 'self' https://ssl.google-analytics.com; object-src 'self'",
 	"web_accessible_resources": [
 		"img/icon128.png"
@@ -24,4 +24,5 @@
         "tabs", 
         "http://*/*", 
         "https://*/*"
-    ]}
+    ]
+}

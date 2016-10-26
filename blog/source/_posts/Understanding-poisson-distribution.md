@@ -25,7 +25,7 @@ Whether there being calls received in each period of time is independent. Let's 
 
 It can be easily found out that $P(X=x)$ follows Binomial distribution, so
 
-$$P(X=x) = \binom n x {p_n}^x(1-p_n)^{(n - x)}$$
+$$P(X=x) = \binom n x {p_n}^x(1-p_n)^{(n - x)}\tag1$$
 
 The expected value of $X$ is
 
@@ -39,7 +39,7 @@ $$p_n = {p_n}'$$
 
 So that
 
-$$E(X) = np_n = n{p_n}' = \lambda\tag1$$
+$$E(X) = np_n = n{p_n}' = \lambda\tag2$$
 
 Let's define another variable Y
 
@@ -50,11 +50,11 @@ When $n$ is large enough, no more than one call exists in one period of time, so
 
 So
 
-$$P(Y=x) = P(X=x) = \binom n x {p_n}^x(1-p_n)^{(n-x)}\tag2$$
+$$P(Y=x) = P(X=x) = \binom n x {p_n}^x(1-p_n)^{(n-x)}\tag3$$
 
 How large should $n$ be to hold the above equation? 100, 10000, 10000000000? The larger, the better, so we set $n \to\infty$, so $\delta t \to 0$. In this case, no more than one call exists in one period of time. 
 
-Let's prove that no more than one call exists in $\delta t$ when $\delta t \to 0$. Assuming more than one call exist in $\delta t$, because $\delta t \to 0$, so $\delta t$ should be smaller than $\forall \varepsilon>0$. So we can futher split $\delta t$ into several parts so each part only contains one call or no call, so no more than one call could exist in $\delta t$ when $\delta t \to\infty$. But is there a possibility that one call exists in $\delta t$? Notice that $\delta t\to 0$ doesn't mean $\delta t = 0$. It just means $\delta t$ is smaller than any positive real number. Just like the figure of $y=\frac 1 x$ below. While $y\to0$ when $x\to \infty$, but $y$ could be smaller than any positive real number, but $y$ can never be 0.
+Let's prove that no more than one call exists in $\delta t$ when $\delta t \to 0$. Assuming more than one call exist in $\delta t$, because $\delta t \to 0$, so $\delta t$ should be smaller than $\forall \varepsilon>0$. So we can futher split $\delta t$ into several parts so each part only contains one call or no call, so no more than one call could exist in $\delta t$ when $\delta t \to\infty$. But is there a possibility that one call exists in $\delta t$? Yes. Notice that $\delta t\to 0$ doesn't mean $\delta t = 0$. It just means $\delta t$ is smaller than any positive real number. Just like the figure of $y=\frac 1 x$ below. While $y\to0$ when $x\to \infty$, but $y$ could be smaller than any positive real number, but $y$ can never be 0.
 
 ![$y=\frac 1 x$](/images/y=1_over_x.png)
 
@@ -73,15 +73,15 @@ So the possibility of there existing only one call in $\delta t$ is 0. Does it m
 
 The number of *event1* can never be 0 as long as we receive at least one call in a day. But when $n$ gets larger and larger, *event2* will finally be 0. This is different although the possibility of both events is 0 when $n\to\infty$.
 
-Let's add $n\to\infty$, so $(2)$ becomes
+Let's add $n\to\infty$, so $(3)$ becomes
 
-$$P(Y=x) = P(X=x) = \lim\limits_{n\to\infty}\binom n x {p_n}^x(1-p_n)^{(n-x)}\tag3$$
+$$P(Y=x) = P(X=x) = \lim\limits_{n\to\infty}\binom n x {p_n}^x(1-p_n)^{(n-x)}\tag4$$
 
 Let
 
 $$\lambda_n = np_n$$
 
-According to $(1)$
+According to $(2)$
 
 $$\lim\limits_{n\to\infty}np_n = \lambda$$
 
@@ -89,7 +89,7 @@ So
 
 $$\lim\limits_{n\to\infty}\lambda_n = \lambda$$
 
-Put $p_n = \frac{\lambda_n} n$ into $(3)$, we get
+Put $p_n = \frac{\lambda_n} n$ into $(4)$, we get
 
 \begin{equation}\begin{split} &P(Y=x) \\
 &= \lim\limits_{n\to\infty}\binom n x(\frac{\lambda_n} n)^x(1-\frac{\lambda_n}n)^{(n-x)}\\
@@ -98,3 +98,56 @@ Put $p_n = \frac{\lambda_n} n$ into $(3)$, we get
 &=\frac{e^{-\lambda}{\lambda}^x}{x!}\end{split}\end{equation}
 
 You can find out why $\lim\limits_{n\to\infty}(1-\frac{\lambda_n} n)^n = e^{-\lambda}$ in [this post](https://searene.github.io/2016/09/30/Calculate-1-lambda-n-n/)
+
+# FAQ
+
+**Q**: If I was given $n$ and $p_n$, and I got $\lambda$ using $\lambda = np_n$, then I calculate the probability of there exising $x$ events in the total amount of time using the following equation.
+
+$$P(X=x) = \frac{e^{-\lambda}{\lambda}^x}{x!}$$
+
+ Is it the exact value I want or just an approximation?
+
+**A**: This is just an approximation. The value you get is **the number of pieces where events exist**. There could be one event in a piece, there could be two or more events in a piece. So $P(X=x)$ not only includes the some of the cases where we want, but also the case where we don't want, e.g. it also includes the case where $x+1$ events occur, but it doesn't include the case where $x$ events fall into $x-1$ or less pieces.
+
+**Q**: If I was given the expected value $\lambda$, and I calculate the probability using the following equation, then I calculate the probability of there exising $x$ events in the total amount of time using the following equation.
+
+$$P(X=x) = \frac{e^{-\lambda}{\lambda}^x}{x!}$$
+
+ Is it the exact value I want or just an approximation?
+
+**A**: It's the value you want. When $n$ is not large, the reason why there is a difference between $\binom n x{p_n}^x(1-p_n)^{(n-x)}$ and $\frac{e^{-\lambda}{\lambda}^x}{x!}$ is that $p_n$ is not exactly the value we want. That is, when $n$ is not large and we calculate the probability using $(1)$, the answer we get is
+
+$$P(X=x) = P_1 + P_2$$
+
+* $X$: the number of pieces where one or more events exist
+* $P_1$ refers to the case where $x$ events fall into $x$ pieces
+* $P_2$ refers to the case where $x+1$ or more events fall into $x$ pieces
+
+The value we want would be
+
+$$P(Y = x) = P_1 + P_3$$
+
+* $P_3$ refers to the case where $x$ events fall into $x-1$ or less pieces.
+* Y: the total number of events occurring.
+
+As $n\to\infty$, $P_2\to 0$, $P_3\to 0$, so $P(X=x) \to P(Y=x)$
+
+So
+
+$$\lim\limits_{n\to\infty}P(X=x) = \lim\limits_{n\to\infty}P(Y=x) = P_1$$
+
+Because
+
+$$P(X=x) = \binom n x {p_n}^x(1-p_n)^{(n-x)}$$
+
+So
+
+$$\lim\limits_{n\to\infty}P(Y=x) = \frac{e^{-\lambda}{\lambda}^x}{x!}$$
+
+Because P(Y=x) has nothing to do with what $n$ is, so $\lim\limits_{n\to\infty}P(Y=x) = P(Y=x)$
+
+So
+
+$$P(Y=x) = \frac{e^{-\lambda}{\lambda}^x}{x!}$$
+
+That is, the number of total events is $\frac{e^{-\lambda}{\lambda}^x}{x!}$.

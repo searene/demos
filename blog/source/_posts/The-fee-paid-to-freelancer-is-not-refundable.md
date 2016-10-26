@@ -2,7 +2,7 @@ title: The fee paid to freelancer is not refundable
 date: 2016-07-04 00:00:00
 tags:
 categories: Journal
-thumbnail: https://gwinnettonlinecampus.com/wp-content/uploads/2015/06/refund.png
+thumbnail: /images/refund.png
 ---
 
 About two days ago, I got a message from my phone that I was charged for ￥110.72. The money was taken directly from my credit card. At first, I thought the money was stolen using some high-end technology, but I was wrong. After having a conversation with the customer service of UnionPay, I got a keyword, freelancer.

@@ -66,7 +66,6 @@ filetype plugin indent on    " required
 
 "---------------------My Customization------------------------
 set cul
-set list
 set number
 set smartcase
 set autoindent

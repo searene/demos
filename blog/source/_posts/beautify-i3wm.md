@@ -73,4 +73,4 @@ ${if_mpd_playing}${mpd_artist}${mpd_title}${endif}     \
 Restart i3, the shortcut of mine is `Shift+$mod+r`, `$mod` could either be `Alt` or `Super key`
 
 # Credit
-The above contents are from [lovelybacon.deviantart.com](http://lovelybacon.deviantart.com/art/i3bar-icons-white-edition-575375105), thanks for your amazing work. I only did a little modification.
+The above contents are from [lovelybacon.deviantart.com](http://lovelybacon.deviantart.com/art/i3bar-icons-white-edition-575375105), thanks for your amazing work. I only did a few modifications.

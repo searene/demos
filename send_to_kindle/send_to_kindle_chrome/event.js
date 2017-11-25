@@ -1,5 +1,5 @@
 // var HOST = 'http://searene.party';
-var HOST = 'http://searene.party';
+var HOST = 'http://localhost';
 var PORT = '3000';
 
 function upload(plain, html) {

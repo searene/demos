@@ -12,6 +12,9 @@ from keras.preprocessing.text import Tokenizer
 from numpy import asarray, zeros
 import pickle
 
+from src import config
+from src.config import input_length
+
 ext_lang_dict = {
     "py": "Python",
     "c": "C",
@@ -155,6 +158,7 @@ def get_languages(ext_lang_dict):
 
 
 def save_model(model, model_file_location, weights_file_location):
+    os.makedirs(os.path.dirname(model_file_location), exist_ok=True)
     with open(model_file_location, "w") as f:
         f.write(model.to_json())
     model.save_weights(weights_file_location)

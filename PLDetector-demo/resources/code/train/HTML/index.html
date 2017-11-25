@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <title>Ruby on Rails: Welcome aboard</title>
+    <script type="text/javascript" src="javascripts/prototype.js"></script>
+    <script type="text/javascript" src="javascripts/effects.js"></script>
+    <script type="text/javascript">
+      function createQ(qname){
+				account_id = $('account_id').value
+				api_key = $('api_key').value
+				body = {q:{id:qname}}
+				
+				new Ajax.Request('http://live.localhost:3000/qs.json',{
+													contentType:'application/json',
+													postBody:body,
+													onComplete:function(tranport){
+														
+														alert(transport.responseText);
+													}
+													})
+				
+			}
+    </script>
+  </head>
+  <body>
+		<div id="account">
+			<h1>Account</h1>
+			<p>Account ID: <input value="test1" id="account_id" /></p>
+			<p>API Key: <input value="1" id="api_key" /></p>
+		<div>
+		<div id="q">
+				<h1>Queues</h1>
+				<p>Queue ID: <input id="q_id" value="test"></p>
+				<p><input value="Create Q" type="button" onclick="createQ($('q_id').value)"></p>
+		<div>
+
+  </body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+<title>prototypeGrowl 1.0</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="text/javascript" charset="utf-8" src="prototype-1.6.0.2.js"></script>
+<script type="text/javascript" charset="utf-8" src="effects.js"></script>
+<script type="text/javascript" charset="utf-8" src="growl.js"></script>
+<link rel="stylesheet" href="growl.css" type="text/css" media="screen"  />
+<style type="text/css" media="screen">
+  * {
+  	margin: 0;
+  	padding: 0; }
+
+  body {
+  	margin:50px;
+  	font: 13px/14px "Lucida Grande", Arial, Helvetica, Verdana, sans-serif; }
+
+  a {
+  	color:#666; }
+
+  a:hover {
+  	text-decoration:none; }
+
+  ul, li {
+  	margin:10px; }
+
+  pre {
+  	width:450px;
+  	background-color:#0C1021;
+  	padding:20px;
+  	margin:25px 0px; }
+
+  code {
+  	color:#7D93B8;
+  	font: 12px/13px Monaco, Courier, monospace; }
+</style>
+</head>
+<body>
+	<h3><img src="logo.png" alt="prototypeGrowl 0.8" title="prototypeGrowl 0.8"></h3>
+	<ul>
+		<li><a href="#" id="smoke1" title="Show msg Smoke">Show Growl Smoke.</a> (click to close)</li>
+		<li><a href="#" id="smoke2" title="Show msg Smoke">Show Growl Smoke.</a> (autohide)</li>
+		<li><a href="#" id="bezel1" title="Show msg Bezel">Show Growl Bezel.</a> (click to close)</li>
+		<li><a href="#" id="bezel2" title="Show msg Bezel">Show Growl Bezel.</a> (autohide)</li>
+	</ul>
+	<pre><code>
+    var growl = new Growl.Smoke;
+    growl.show({
+      title:    &apos;prototypeGrowl&apos;,
+      text:     &apos;http://github.com/cpjolicoeur/prototypegrowl&apos;,  
+      image:    &apos;growl.jpg&apos;,
+      autohide: 2,
+      animated: 0.75,
+      opacity: 0.8
+    });
+	</code></pre>
+  <ul>
+    <li><a href="http://github.com/cpjolicoeur/prototypegrowl" title="Download">Download the source on GitHub.</a></li>
+    <li><a href="prototypegrowl_1.0.zip" title="Download">Download the latest release (version 1.0)</a></li>
+  </ul>
+	<div class="footer" style="margin-top:5em;border-top:1px solid #000;padding-top:1em;">
+    <p>&copy; 2008 <a href="http://github.com/cpjolicoeur" title="Blog">Craig P Jolicoeur</a> and <a href="http://github.com/tdreyno" title="Thomas Reynolds">Thomas Reynolds</a>.</p>
+	</div>
+
+	<script type="text/javascript" charset="utf-8">
+		var growl = new Growl.Smoke;
+    $('smoke1').observe('click', function(event) {
+      growl.show({
+        image: 'http://www.gravatar.com/avatar.php?gravatar_id=a4c4bd782c415f9ec93fe11e5694bf06&rating=PG&size=48',
+        title: 'Click me to close!',
+        autohide: 0,
+				animated: 0
+      });
+			event.stop();
+		});
+    $('smoke2').observe('click', function(event) {
+      growl.show({
+        image: 'http://www.gravatar.com/avatar.php?gravatar_id=cf8a610127d1108dfe67f673320b5fe5&rating=PG&size=48',
+        title: 'I close automatically',
+        autohide: 2
+      });
+			event.stop();
+		});
+
+    var growlb = new Growl.Bezel;
+    $('bezel1').observe('click', function(event) {
+      growlb.show({
+        image: 'http://www.gravatar.com/avatar.php?gravatar_id=a4c4bd782c415f9ec93fe11e5694bf06&rating=PG&size=48',
+        title: 'Click me to close',
+        text: 'Tell what is happening at the moment',
+        autohide: 0,
+    });
+    event.stop();
+    });
+    $('bezel2').observe('click', function(event) {
+      growlb.show({
+        image: 'http://www.gravatar.com/avatar.php?gravatar_id=cf8a610127d1108dfe67f673320b5fe5&rating=PG&size=48',
+        title: 'I will close automatically',
+        text: 'blah, blah, blah',
+        autohide: 2
+    });
+    event.stop();
+    });
+	</script>
+</body>
+</html>

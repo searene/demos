@@ -1,0 +1,61 @@
+.growl-smoke {
+	width: 298px;
+	height: 83px;
+	position: fixed;
+	right: 10px;
+	margin-top: 10px;
+	z-index: 999;
+	font-family: "Lucida Grande", arial, helvetica, sans-serif;
+	background: url(smoke.png) no-repeat; }
+.growl-smoke img {
+	float: left;
+	display: inline;
+	margin: 12px; }
+.growl-smoke h3 {
+	margin: 0;
+	padding: 10px 0;
+	font-size: 13px; 
+	line-height: 17px;
+	color: #fff;
+	text-shadow: 0 0 0 #000;
+	-moz-opacity: 0.9999; }
+.growl-smoke p {
+	margin: 0 10px;
+	font-size: 12px; 
+	line-height: 16px;
+	color: #fff;
+	text-shadow: 0 0 0 #000;
+	-moz-opacity: 0.9999; }
+.growl-bezel {
+	width: 210px;
+	height: 210px;
+	position: fixed;
+	right: 10px;
+	margin-top: 10px;
+	z-index: 999;
+        text-align: center;
+	font-family: "Lucida Grande", arial, helvetica, sans-serif;
+	background: url(bezel.png) no-repeat; }
+.growl-bezel * {
+        display: block;
+}
+.growl-bezel img {
+		margin-top: 12px; 
+        margin-left: 40%;
+        margin-right: 40%;
+ }
+.growl-bezel h3 {
+	margin: 0;
+	padding: 10px 0;
+	font-size: 13px; 
+	line-height: 17px;
+	color: #fff;
+	text-shadow: 0 0 0 #000;
+	-moz-opacity: 0.9999; }
+.growl-bezel p {
+	margin: 0 10px;
+	font-size: 12px; 
+	line-height: 16px;
+	color: #fff;
+	text-shadow: 0 0 0 #000;
+	-moz-opacity: 0.9999; }	

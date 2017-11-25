@@ -1,0 +1,52 @@
+pre {
+  background-color: #eee;
+  padding: 10px;
+  font-size: 11px;
+}
+
+a { color: #874585; text-decoration: underline;}
+a:visited { color: #666; }
+
+.fieldWithErrors {
+  padding: 2px;
+  background-color: #FF4A3B;
+  display: table;
+}
+
+#errorExplanation {
+  width: 400px;
+  border: 2px solid red;
+  padding: 7px;
+  
+  background-color: #FF4A3B;
+}
+
+#errorExplanation h2 {
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 5px 5px 15px;
+  font-size: 12px;
+  margin: -7px;
+  background-color: #FF4A3B;
+  color: #fff;
+}
+
+#errorExplanation p {
+  color: #333;
+  margin-bottom: 0;
+  padding: 5px;
+}
+
+#errorExplanation ul li {
+  font-size: 12px;
+  list-style: square;
+}
+
+p {
+	color: #874585;
+}
+
+h1,h2,h3,h4,h5,h6 {
+	color: #874585;
+	text-shadow: 1px 1px 1px rgba(135,69,133, .5);
+}

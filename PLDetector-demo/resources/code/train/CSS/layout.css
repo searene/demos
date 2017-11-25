@@ -1,0 +1,25 @@
+#container {
+	margin:0 auto;
+	min-width:600px;
+}
+
+#header {
+	
+}
+
+#content {
+}
+#content .main {
+	margin:0 auto;
+}
+
+#content .main .login {
+	margin:100px auto 0 auto;
+	width:500px;
+}
+#content .main .login h2 {
+	margin:0 0 0 15px;
+}
+#content .main .login .subtitle {
+	margin:0 0 0 15px;
+}

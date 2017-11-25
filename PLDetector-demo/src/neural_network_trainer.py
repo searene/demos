@@ -15,16 +15,7 @@ import pickle
 from src import config
 from src.config import input_length
 
-ext_lang_dict = {
-    "py": "Python",
-    "c": "C",
-    "java": "Java",
-    "scala": "Scala",
-    "js": "Javascript",
-    "css": "CSS",
-    "cs": "C#",
-    "html": "HTML"
-}
+all_languages = ["Python", "C", "Java", "Scala", "Javascript", "CSS", "C#", "HTML"]
 
 
 def load_words_from_string(s):
@@ -34,16 +25,6 @@ def load_words_from_string(s):
     # remove empty elements
     result = [word for word in result if word.strip() != ""]
 
-    return result
-
-
-def get_all_languages():
-    result = []
-    for value in ext_lang_dict.values():
-        if type(value) is list:
-            result.extend(value)
-        else:
-            result.append(value)
     return result
 
 
@@ -72,10 +53,9 @@ def to_binary_list(i, count):
 
 
 def get_lang_sequence(lang):
-    languages = get_all_languages()
-    for i in range(len(languages)):
-        if languages[i] == lang:
-            return to_binary_list(i, len(languages))
+    for i in range(len(all_languages)):
+        if all_languages[i] == lang:
+            return to_binary_list(i, len(all_languages))
     raise Exception(f"Language {lang} is not supported.")
 
 
@@ -113,13 +93,6 @@ def build_vocab_tokenizer_from_set(s):
     return vocab_tokenizer
 
 
-def should_language_be_loaded(language):
-    for value in ext_lang_dict.values():
-        if value == language:
-            return True
-    return False
-
-
 def get_files(data_dir):
     result = []
     depth = 0
@@ -131,8 +104,7 @@ def get_files(data_dir):
             continue
 
         language = os.path.basename(root)
-        if should_language_be_loaded(language):
-            result.extend([os.path.join(root, f) for f in files])
+        result.extend([os.path.join(root, f) for f in files])
         depth += 1
     return result
 
@@ -261,7 +233,7 @@ def build_model(train_data_dir, vocab_tokenizer, word2vec):
     model.add(Conv1D(filters=128, kernel_size=5, activation="relu"))
     model.add(MaxPooling1D(pool_size=2))
     model.add(Flatten())
-    model.add(Dense(len(get_all_languages()), activation="sigmoid"))
+    model.add(Dense(len(all_languages), activation="sigmoid"))
     logging.info(model.summary())
     model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
     model.fit(x_train, y_train, epochs=10, verbose=2)

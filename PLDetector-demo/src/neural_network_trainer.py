@@ -87,9 +87,9 @@ def load_model(model_file_location, weights_file_location):
     return model
 
 
-def build_vocab_tokenizer_from_set(s):
+def build_vocab_tokenizer_from_set(vocab):
     vocab_tokenizer = Tokenizer(lower=False, filters="")
-    vocab_tokenizer.fit_on_texts(s)
+    vocab_tokenizer.fit_on_texts(vocab)
     return vocab_tokenizer
 
 

@@ -91,13 +91,13 @@ $$\lim\limits_{n\to\infty}\lambda_n = \lambda$$
 
 Put $p_n = \frac{\lambda_n} n$ into $(4)$, we get
 
-\begin{equation}\begin{split} &P(Y=x) \\
+$$\begin{equation}\begin{split} &P(Y=x) \\
 &= \lim\limits_{n\to\infty}\binom n x(\frac{\lambda_n} n)^x(1-\frac{\lambda_n}n)^{(n-x)}\\
 &=\lim\limits_{n\to\infty}\frac{n(n-1)\cdots(n-x+1)}{x!\cdot n^x}\cdot{\lambda_n}^x\cdot(1-\frac{\lambda_n} n)^n\cdot(1-\frac{\lambda_n} n)^{-x}\\
 &=\lim\limits_{n\to\infty}\frac 1 {x!} \cdot 1 \cdot \underbrace{(1-\frac 1 n)\cdot(1-\frac 2 n)\cdots(1-\frac{x-1} n)}_1\cdot\underbrace{ {\lambda_n}^x}_{\lambda}\cdot\underbrace{(1-\frac{\lambda_n} n)^n}_{e^{-\lambda}}\cdot\underbrace{(1-\frac{\lambda_n} n)^{-x}}_1\\
-&=\frac{e^{-\lambda}{\lambda}^x}{x!}\end{split}\end{equation}
+&=\frac{e^{-\lambda}{\lambda}^x}{x!}\end{split}\end{equation}$$
 
-You can find out why $\lim\limits_{n\to\infty}(1-\frac{\lambda_n} n)^n = e^{-\lambda}$ in [this post](https://searene.github.io/2016/09/30/Calculate-1-lambda-n-n/)
+You can find out why $\lim\limits_{n\to\infty}(1-\frac{\lambda_n} n)^n = e^{-\lambda}$ in [this post](https://searene.me/2016/09/30/Calculate-1-lambda-n-n/)
 
 # FAQ
 

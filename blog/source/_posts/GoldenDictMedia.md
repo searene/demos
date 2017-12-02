@@ -47,7 +47,6 @@ Reset will delete all the dictionary data and configurations in GoldenDictMedia,
 # Known Issues
 
 1. Images cannot imported when Strip-HTML is on.
-
 2. I didn't look through the source code of GoldenDict. But I think that this process should be totally automatic. The file path used in GoldenDict should be reversible, the addon should be able to reverse GoldenDict file path to the real file path in system and get the media from the `zip` file. So anyone with a good knowledge of how GoldenDict media works is welcomed to improve the addon to make it automatic.
 
 # Bug Report
@@ -55,5 +54,4 @@ Reset will delete all the dictionary data and configurations in GoldenDictMedia,
 There are two ways to report a bug or offering a suggestion.
 
 1. Open an issue on [my github repository](https://github.com/searene/Anki-Addons)
-
-2. Leave a comment below [my blog](https://searene.github.io/2016/02/14/GoldenDictMedia/)
+2. Leave a comment below [my blog](http://searene.me/2016/02/14/GoldenDictMedia/)

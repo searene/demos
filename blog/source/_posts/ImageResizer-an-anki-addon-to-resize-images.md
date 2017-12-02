@@ -21,12 +21,11 @@ ImageResizer is a simple anki addon used to resize the image stored in the clipb
 There's two ways of installing the addon, both require to restart anki after installation
 
 1. Install it from [ankiweb](https://ankiweb.net/shared/info/1214357311).
-
 2. Put [ImageResizer.py](https://raw.githubusercontent.com/searene/Anki-Addons/master/ImageResizer/ImageResizer.py) in your anki addon directory
 
 # Usage
 
-Normally after you installed this addon, Images will be automatically resized if you paste images when adding new cards, either by hitting `Ctrl + V` or `Ctrl + Shift + V` or click on the button on the toolbar.
+Normally after you install this addon, Images will be automatically resized if you paste images when adding new cards, either by hitting `Ctrl + V` or `Ctrl + Shift + V` or click on the button on the toolbar.
 
 ![To make it work](https://i.imgur.com/kupbkcU.png)
 
@@ -50,5 +49,4 @@ You can also set the width or height of the resized image. Select `scale to widt
 There are two ways to report a bug or offering a suggestion.
 
 1. Open an issue on [my github repository](https://github.com/searene/Anki-Addons)
-
-2. Leave a comment below [my blog](https://searene.github.io/2016/02/14/ImageResizer-an-anki-addon-to-resize-images/)
+2. Leave a comment below [my blog](https://searene.me/2016/02/14/ImageResizer-an-anki-addon-to-resize-images/)

@@ -57,7 +57,7 @@ Combine (3) and (4), we get
 
 $$e^{-\lambda_n}(1-\frac{\lambda_n} n)^{\lambda_n}\leq (1-\frac{\lambda_n} n)^n \leq e^{-\lambda_n}$$
 
-According to [this theorem](https://searene.github.io/2016/10/01/Proof-of-limit-f-x-g-x-c-d/), because $1 - \frac{\lambda_n} n > 0, \lambda_n > 0, \lim\limits_{n\to\infty}\lambda_n = \lambda$, we have
+According to [this theorem](https://searene.me/2016/10/01/Proof-of-limit-f-x-g-x-c-d/), because $1 - \frac{\lambda_n} n > 0, \lambda_n > 0, \lim\limits_{n\to\infty}\lambda_n = \lambda$, we have
 
 $\lim\limits_{n \to \infty}(1-\frac{\lambda_n} n)^{\lambda_n} = [\lim\limits_{n \to \infty}(1-\frac{\lambda_n} n)]^{\lim\limits_{n\to\infty}\lambda_n}$
 

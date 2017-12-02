@@ -6,14 +6,14 @@ thumbnail: /images/This-Guy-Rocks1.jpg
 ---
 
 # Introduction
-`this` in javascript is always a mysterious thing. Some programmers have written a lot of javascript code yet still cannot tell the value of `this` every now and then. So today, I decided to write an article about it to solve the problem once and for all. I think you would be able to fully understand what `this` refers to in almost all situations after you read this article.
+`this` in javascript is always a mysterious thing. Some programmers who have written a lot of javascript code still cannot tell the value of `this` every now and then. So today, I decided to write an article about it to solve the problem once and for all. I think you would be able to fully understand what `this` refers to in almost all situations after you read this article.
 
 # Rule 1: Basic Rule
-<div style="background-color: #fff5cc; border-color: #ffe273; padding: 10px; border-left: 10px solid #ffe273">**Rule 1**: `this` is injected into context when the function which contains `this` gets executed, and the injected value is the object that invokes the function.</div>
+<div style="background-color: #fff5cc; border-color: #ffe273; padding: 10px; border-left: 10px solid #ffe273">**Rule 1**: When `this` is used in a normal function(i.e. not an arrow function), `this` refers to the object that calls the function.</div>
 
-This is the most important rule. Maybe you haven't fully understood its meaning, let's use several examples to illustrate what it means.
+This is the most important rule, let's use several examples to illustrate what it means.
 
-#### when the function is invoked by an object.
+#### when the function is called by an object.
 
 ```javascript
 var obj = {
@@ -24,21 +24,11 @@ var obj = {
 obj.foo();
 ```
 
-Before trying to get the value of `this` in the above code, let's recall the first part of **Rule 1** beforehand.
-
-> `this` is injected into context when the function which  contains `this` gets executed.
-
-What does it mean? Actually it means that `this` doesn't have a value before running `obj.foo();`. The value of `this` is injected into `foo` when running the last line of the above code. So talking about the value of `this` is meaningless without invoking the function.
-
-Now we know that `this` is injected into `foo` only when `obj.foo()` gets executed. The question left is what the injected value is. Let's recall the second part of **Rule 1**.
-
-> the injected value is the object that invokes the function.
-
-Who invokes `foo`? `obj`! Problem solved, `this` refers to `obj` here.
+`this` is in a normal function `foo`, and `foo` is called by `obj`. So `this` refers to `obj` here.
 
 <div style="border: 1px solid #c8c8c8; padding: 10px; border-radius: 5px;">answer: **obj**</div>
 
-#### when the function is invoked all by itself.
+#### when the function is called all by itself.
 
 ```javascript
 function foo() {
@@ -48,7 +38,7 @@ function foo() {
 foo();
 ```
 
-This is different, nothing invoked `foo()`, right? Well, not exactly. In fact, `foo()` is same as `window.foo()`, so `this` refers to `window` here, which is the global object in javascript.
+This is different, nothing calls `foo()`, right? Well, not exactly. In fact, `foo()` is the same as `window.foo()`, so `this` refers to `window` here, which is the global object in javascript.
 
 <div style="border: 1px solid #c8c8c8; padding: 10px; border-radius: 5px;">answer: **window**</div>
 
@@ -64,14 +54,17 @@ var bar = obj.foo;
 bar();
 ```
 
-This time the function gets executed is not `obj.foo`, it's `bar`, because `obj.foo` is assigned to `bar`.
+This time the function that gets executed is not `obj.foo`, it's `bar`, because `obj.foo` is assigned to `bar`.
 
-`this` refers to object that invokes `bar` instead of `obj.foo` in this case, because `obj.foo` has been assigned to `bar`. Who invokes `bar`? `window`. So `this` refers to `window` here.
+`this` refers to object that calls `bar` instead of `obj.foo` in this case, because `obj.foo` has been assigned to `bar`. Who calls `bar`? `window`. So `this` refers to `window` here.
 
-<div style="border: 1px solid #c8c8c8; padding: 10px; border-radius: 5px;">answer: **window**</div>
+<div style="border: 1px solid #c8c8c8; padding: 10px; border-radius: 5px; margin-bottom: 30px">answer: **window**</div>
+
+<div style="background-color: #EBF4F7; border-color: #ffe273; padding: 10px;">**A Gotcha Moment**: `this` is only injected into context when the function which contains `this` is called. We cannot determine the value of `this` only by its definition. We have to see who calls `this` to determine its value. You can find it in the above code that the value of `this` may be different when it's called in different ways.</div>
+
 
 # Rule 2: Eval
-<div style="background-color: #fff5cc; border-color: #ffe273; padding: 10px; border-left: 10px solid #ffe273">**Rule 2**: `this` is the same as the one in the context when evaluated using `eval` directly, and is equal to `window` when evaluated using `eval` indirectly.</div>
+<div style="background-color: #fff5cc; border-color: #ffe273; padding: 10px; border-left: 10px solid #ffe273">**Rule 2**: `this` remains unchanged when evaluated using `eval` directly, and is equal to `window` when evaluated using `eval` indirectly.</div>
 
 Using `eval` directly means something like: `eval('this')`.
 Using `eval` indirectly means something like `(1, eval)('this')`.
@@ -152,7 +145,7 @@ function bar() {
 bar();
 ```
 
-Do you know what `this` refers to in the inserted line? Of course, it refers to `window`, because it's `window` that invokes `bar`. So what `this` refers to in the original code(the 4th line)? It's the same! Because the outer context of `obj.foo` is exactly the context where the inserted line is in.
+Do you know what `this` refers to in the inserted line? Of course, it refers to `window`, because it's `window` that calls `bar`. So what `this` refers to in the original code(the 4th line)? It's the same! Because the outer context of `obj.foo` is exactly the context where the inserted line is in.
 
 <div style="border: 1px solid #c8c8c8; padding: 10px; border-radius: 5px;">answer: **window**</div>
 
@@ -195,7 +188,7 @@ Do you know what `this` refers to in the inserted line? Of course, it refers to 
 </html>
 ```
 
-`this` is used in a separate event handler `foo` here. So it refers to the DOM element `button` according to **Rule 4**. In fact, we can also use **Rule 1** to get the same answer. Because each time the button is clicked, `button.onclicked` is executed. Who invokes the `onclick` function? `button`. So the answer is `button`.
+`this` is used in a separate event handler `foo` here. So it refers to the DOM element `button` according to **Rule 4**. In fact, we can also use **Rule 1** to get the same answer. Because each time the button is clicked, `button.onclicked` is executed. Who calls the `onclick` function? `button`. So the answer is `button`.
 
 <div style="border: 1px solid #c8c8c8; padding: 10px; border-radius: 5px;">answer: **button(DOM element)**</div>
 

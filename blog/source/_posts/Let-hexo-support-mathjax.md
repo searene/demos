@@ -101,8 +101,10 @@ em: /^\b_((?:[^_]|__)+?)_\b|^\*((?:\*\*|[\s\S])+?)\*(?!\*)/,
 with
 
 ``` shell
-em:/^\*((?:\*\*|[\s\S])+?)\*(?!\*)/,
+em: /^\*((?:\*\*|[\s\S])+?)\*(?!\*)/,
 ```
+
+to remove the conversion of `_`
 
 Then run the following command to deploy your blog
 

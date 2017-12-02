@@ -19,7 +19,7 @@ feed:
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://searene.me
+url: http://searene.life
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
@@ -91,4 +91,6 @@ plugins:
 
 deploy:
   type: git
-  repo: git@github.com:searene/searene.github.io.git
+  repo: root@searene.life:website.git
+  branch: master
+  message:
